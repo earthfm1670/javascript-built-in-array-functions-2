@@ -374,4 +374,15 @@ const bills = [
 ];
 
 // Start coding here
-const totalMembers;
+const totalMembers = bills
+  .filter((bill) => bill.member !== null)
+  .map((bill) => bill.member.name);
+
+const uniqueMember = totalMembers.filter(
+  (name, index) => totalMembers.indexOf(name) === index
+);
+//ทบทวน** การทำงานใน filter: สำหรับ index = 0, name = "Mark" จะคืนค่า 0: สำหรับ index = 1, name = "Mark" จะคืนค่า 0
+//จะเห็นได้ว่า .indexOf จะเลือกชื่อที่เจอตัวแรกสุดก่อนเสมอ 
+//เช่น totalMembers.indexOf("Mark") จะคืนค่า 0 และจะไม่คืนค่าMarkที่ซ้ำในตำแหน่งที่ 1,4,16,18: totalMembers.indexOf("John") จะคืนค่า 8 และจะไม่คืนค่าJohnที่ซ้ำในตำแหน่งที่ 9
+console.log(totalMembers);
+console.log(uniqueMember);
