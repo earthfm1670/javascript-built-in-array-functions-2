@@ -385,8 +385,13 @@ const totalPaidByLocation = bills.reduce((acc, cur) => {
 console.log(totalPaidByLocation);
 
 /* ทบทวน
-acc[cur.location] เป็นการเช็คว่าภายใน acc มี cur.location แล้วรึยัง => ถ้ามีจะคืนค่า true
+acc[cur.location] เป็นการเช็คว่าภายใน acc มี cur.location แล้วรึยัง => ถ้ามีจะคืนค่า truthy หรือ falsy
 เช่น acc["Bangkok"] จะเช็คว่าภายใน acc มี location เป็น "Bangkok" มั้ย ซึ่งมีก็จะคืนค่าเป็น true
+
+ในเงื่อนไข if หรือใน ternary operator acc[cur.location] ทำหน้าที่ตรวจสอบว่ามีค่าหรือไม่ (truthy หรือ falsy)
+ถ้าไปใช้ในบริบทอื่นที่ต้องการคำนวณตัวเลข เช่น acc[cur.location] + 100 ค่าที่ถูกเก็บใน acc[cur.location] จะถูกใช้ตามประเภทของมัน (เช่นถ้าเป็นตัวเลขก็จะถูกนำมาบวกกับ 100):
+
+ดังนั้น acc[cur.location] สามารถตรวจสอบได้ว่าเคยถูกกำหนดค่าแล้วหรือไม่ใน if แต่ถ้านำไปใช้กับการคำนวณ มันจะใช้ค่าจริงของมัน (เช่นตัวเลข) ไม่ใช่แค่ตรวจสอบค่า truthy/falsy
 
 รอบที่ 1:
 cur: { location: "Chonburi", total: 20000 }
