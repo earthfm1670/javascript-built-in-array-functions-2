@@ -374,4 +374,23 @@ const bills = [
 ];
 
 // Start coding here
-const totalMembers;
+function memberName(arr) {
+  const filteredArr = arr.filter((x) => x.member !== null);
+  const newArr = [];
+  filteredArr.map((x) => newArr.push(x.member.name));
+  return newArr;
+}
+const memberList = memberName(bills);
+console.log(memberList);
+
+// const uniqueMember = memberList.filter((x,index) => memberList.indexOf(x) === index);
+// console.log(uniqueMember.length)
+
+const uniqueNames = memberList.reduce((acc, cur) => {
+  if (!acc.includes(cur)) {
+    acc.push(cur);
+  }
+  return acc;
+}, []);
+
+console.log(uniqueNames.length);

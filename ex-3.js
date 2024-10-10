@@ -374,4 +374,12 @@ const bills = [
 ];
 
 // Start coding here
-const billMembers;
+function memberName(arr) {
+  const filteredArr = arr.filter((x) => x.member !== null);
+  const newArr = [];
+  filteredArr.map((x) => newArr.push(x.member.name));
+  return newArr;
+}
+
+const billMembers = memberName(bills);
+console.log(billMembers);
